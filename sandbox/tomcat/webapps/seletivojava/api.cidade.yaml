@@ -1,0 +1,204 @@
+openapi: 3.0.0
+info:
+  title: "cidade"
+  description: "cidade"
+  version: "20250331232404"
+servers:
+  - url: http://localhost:8080/seletivojava/api/cidade
+security:
+  - bearerAuth: []
+paths:
+  /:
+    post:
+      tags:
+        - api  
+      operationId: "api.cidade.CidadeInsert"
+      summary: "Método para cadastar um novo registro de cidade"
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CidadeInsertInput"
+      
+      responses:
+        200:
+          description: "Successful operation"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CidadeInsertOutput"
+        404:
+          description: "Not found"
+
+
+    get:
+      tags:
+        - api  
+      operationId: "api.cidade.CidadeSelect"
+      summary: "Método para consultar todos o registro de cidade"
+      parameters:
+        - name: "cidid"
+          in: "query"
+          required: false
+          schema:
+            type: "integer"
+            format: "int64"
+        - name: "cidnome"
+          in: "query"
+          required: false
+          schema:
+            type: "string"
+            
+        - name: "ciduf"
+          in: "query"
+          required: false
+          schema:
+            type: "string"
+            
+        - name: "Pagina"
+          in: "query"
+          required: false
+          schema:
+            type: "integer"
+            format: "int32"
+        - name: "Pagesize"
+          in: "query"
+          required: false
+          schema:
+            type: "integer"
+            format: "int32"
+      
+      responses:
+        200:
+          description: "Successful operation"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/modelo.sdt_cidade"  
+
+        404:
+          description: "Not found"
+
+
+    put:
+      tags:
+        - api  
+      operationId: "api.cidade.CidadeUpdate"
+      summary: "Método para alterar um registro de cidade"
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CidadeUpdateInput"
+      
+      responses:
+        200:
+          description: "Successful operation"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/GeneXus.Common.Messages_Message"  
+
+        404:
+          description: "Not found"
+
+  /{cidid}:
+    delete:
+      tags:
+        - api  
+      operationId: "api.cidade.CidadeDelete"
+      summary: "Método para excluir um registro de cidade"
+      parameters:
+        - name: "cidid"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int64"
+      
+      responses:
+        200:
+          description: "Successful operation"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/GeneXus.Common.Messages_Message"  
+
+        404:
+          description: "Not found"
+components:
+ 
+  schemas:
+    CidadeInsertOutput:
+      properties:
+        Messages:
+          description: "Messages"
+          type: array
+          items:
+            $ref: "#/components/schemas/GeneXus.Common.Messages_Message"
+        cid_id:
+          type: "integer"
+          format: "int64"
+
+
+
+
+    CidadeInsertInput:  
+      properties:
+        cid_nome:
+          type: "string"
+        cid_uf:
+          type: "string"
+
+
+    CidadeUpdateInput:  
+      properties:
+        cid_id:
+          type: "integer"
+          format: "int64"
+        cid_nome:
+          type: "string"
+        cid_uf:
+          type: "string"
+
+  
+    GeneXus.Common.Messages_Message:
+      properties:
+        Id:
+          description: "Id"
+          type: "string"
+        Type:
+          description: "Type"
+          type: "integer"
+          format: "int32"
+        Description:
+          description: "Description"
+          type: "string"
+
+
+
+    modelo.sdt_cidade:
+      properties:
+        cid_id:
+          description: "Id da Cidade"
+          type: "integer"
+          format: "int64"
+        cid_nome:
+          description: "Nome da Cidade"
+          type: "string"
+        cid_uf:
+          description: "UF da Cidade"
+          type: "string"
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT          

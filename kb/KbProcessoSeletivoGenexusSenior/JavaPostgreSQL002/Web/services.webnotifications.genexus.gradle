@@ -1,0 +1,13 @@
+dependencies {
+	if (javaPlatform == "jakartaEE" || javaPlatform == "both") {
+		genexusConfiguration ("com.genexus:gxwebsocketjakarta:${genexusVersion}") {
+			transitive = false
+		}
+	}
+	
+	if (javaPlatform == "javaEE" || javaPlatform == "both") {
+		genexusConfiguration ("com.genexus:gxwebsocket:${genexusVersion}") {
+			transitive = false
+		}
+	}
+}

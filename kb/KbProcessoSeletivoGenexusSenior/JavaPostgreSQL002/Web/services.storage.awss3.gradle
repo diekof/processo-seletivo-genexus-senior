@@ -1,0 +1,5 @@
+dependencies {
+	genexusConfiguration ("com.genexus:gxcloudstorage-awss3-v2:${genexusVersion}") {
+		exclude group: 'com.genexus', module: 'gxclassR'
+	}
+}

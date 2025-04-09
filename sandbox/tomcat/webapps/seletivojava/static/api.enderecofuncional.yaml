@@ -1,0 +1,106 @@
+openapi: 3.0.0
+info:
+  title: "enderecofuncional"
+  description: "Consulta de Endereço Funcional"
+  version: "20250331232404"
+servers:
+  - url: http://localhost:8080/seletivojava/api/enderecofuncional
+security:
+  - bearerAuth: []  
+paths:
+  /:
+    get:
+      tags:
+        - api  
+      operationId: "api.enderecofuncional.EnderecoFuncional"
+      summary: "Método para consultar o endereço funcional"
+      parameters:
+        - name: "Nome"
+          in: "query"
+          required: false
+          schema:
+            type: "string"
+            
+        - name: "Pagina"
+          in: "query"
+          required: false
+          schema:
+            type: "integer"
+            format: "int32"
+        - name: "Pagesize"
+          in: "query"
+          required: false
+          schema:
+            type: "integer"
+            format: "int32"
+      
+      responses:
+        200:
+          description: "Successful operation"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/api.sdt_end_funcional_sdt_end_funcionalItem"  
+
+        404:
+          description: "Not found"
+
+components:
+  schemas:
+  
+    api.sdt_end_funcional_sdt_end_funcionalItem:
+      properties:
+        pes_nome:
+          description: "Nome da Pessoa"
+          type: "string"
+        retorno:
+          description: "retorno"
+          type: "string"
+
+        endereco:
+          type: array
+          items:
+            description: enderecoItem
+            $ref: "#/components/schemas/api.sdt_end_funcional.endereco_enderecoItem"
+
+
+    api.sdt_end_funcional.endereco_enderecoItem:
+      properties:
+        end_id:
+          description: "Id do Endereço"
+          type: "integer"
+          format: "int64"
+        end_tipo_logradouro:
+          description: "Tipo Logradouro"
+          type: "string"
+        end_logradouro:
+          description: "Logradouro"
+          type: "string"
+        end_numero:
+          description: "Numero"
+          type: "integer"
+          format: "int64"
+        end_bairro:
+          description: "Bairro"
+          type: "string"
+        cid_id:
+          description: "Id da Cidade"
+          type: "integer"
+          format: "int64"
+        cid_nome:
+          description: "Nome da Cidade"
+          type: "string"
+        cid_uf:
+          description: "UF da Cidade"
+          type: "string"
+
+
+      x-gx-level: "sdt_end_funcional"
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT 
+ 

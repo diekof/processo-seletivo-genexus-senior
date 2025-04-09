@@ -1,0 +1,46 @@
+{
+"ObjectType":"ServiceGroup",
+"Name":"api\\servidorefetivo",
+"BasePath":"api/servidorefetivo",
+"Mappings":
+[
+{
+"Verb":"POST",
+"PathRegexp":"",
+"Path":"",
+"Name":"servidorefetivoinsert",
+"Bodystyle":"Wrapped",
+"VariableAlias": [],
+"ServiceMethod":"gxep_servidorefetivoinsert",
+"Implementation":"api\\efetivo_insert"
+},
+{
+"Verb":"PUT",
+"PathRegexp":"",
+"Path":"",
+"Name":"servidorefetivoupdate",
+"Bodystyle":"Wrapped",
+"VariableAlias": [],
+"ServiceMethod":"gxep_servidorefetivoupdate",
+"Implementation":"api\\servidor_efetivo_update"
+},
+{
+"Verb":"GET",
+"PathRegexp":"",
+"Path":"",
+"Name":"servidorefetivoselect",
+"Bodystyle":"Wrapped",
+"VariableAlias": [],
+"ServiceMethod":"gxep_servidorefetivoselect",
+"Implementation":"api\\servidor_efetivo_select"
+},
+{
+"Verb":"DELETE",
+"PathRegexp":"([^/]+)",
+"Path":"{pes_id}",
+"Name":"servidorefetivodelete",
+"Bodystyle":"Wrapped",
+"VariableAlias": [],
+"ServiceMethod":"gxep_servidorefetivodelete",
+"Implementation":"api\\servidor_efetivo_delete"
+}]}

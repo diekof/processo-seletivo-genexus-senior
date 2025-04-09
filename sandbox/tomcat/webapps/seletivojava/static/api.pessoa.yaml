@@ -1,0 +1,145 @@
+openapi: 3.0.0
+info:
+  title: "pessoa"
+  description: "pessoa"
+  version: "20250331232404"
+servers:
+  - url: http://localhost:8080/seletivojava/api/pessoa
+security:
+  - bearerAuth: []  
+paths:
+  /:
+    post:
+      tags:
+        - api  
+      operationId: "api.pessoa.PessoaInserir"
+      summary: "Método para cadastar uma pessoa"
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PessoaInserirInput"
+      
+      responses:
+        200:
+          description: "Successful operation"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PessoaInserirOutput"
+        404:
+          description: "Not found"
+
+components:
+  schemas:
+    PessoaInserirOutput:
+      properties:
+        Messages:
+          description: "Messages"
+          type: array
+          items:
+            $ref: "#/components/schemas/GeneXus.Common.Messages_Message"
+        pes_id:
+          type: "integer"
+          format: "int64"
+
+    PessoaInserirInput:  
+      properties:
+        sdt_pessoa_insert:
+          description: "sdt_pessoa_insert"
+          $ref: "#/components/schemas/api.sdt_pessoa_insert"
+  
+    api.sdt_pessoa_insert:
+      properties:
+        pes_id:
+          description: "Id da Pessoa"
+          type: "integer"
+          format: "int64"
+        pes_nome:
+          description: "Nome da Pessoa"
+          type: "string"
+        pes_data_nascimento:
+          description: "Data de Nascimento"
+          type: "string"
+          format: "date"
+        pes_sexo:
+          description: "Sexo"
+          type: "string"
+        pes_mae:
+          description: "Nome da Mãe"
+          type: "string"
+        pes_pai:
+          description: "Nome do Pai"
+          type: "string"
+        fp_hash:
+          description: "Hash"
+          type: "string"
+        fp_bucket:
+          description: "Bucket"
+          type: "string"
+        fp_data:
+          description: "Data"
+          type: "string"
+          format: "date"
+
+        endereco:
+          type: array
+          items:
+            description: enderecoItem
+            $ref: "#/components/schemas/api.sdt_pessoa_insert.endereco_enderecoItem"
+
+
+    api.sdt_pessoa_insert.endereco_enderecoItem:
+      properties:
+        end_id:
+          description: "Id do Endereço"
+          type: "integer"
+          format: "int64"
+        end_tipo_logradouro:
+          description: "Tipo Logradouro"
+          type: "string"
+        end_logradouro:
+          description: "Logradouro"
+          type: "string"
+        end_numero:
+          description: "Numero"
+          type: "integer"
+          format: "int64"
+        end_bairro:
+          description: "Bairro"
+          type: "string"
+        cid_id:
+          description: "Id da Cidade"
+          type: "integer"
+          format: "int64"
+        cid_nome:
+          description: "Nome da Cidade"
+          type: "string"
+        cid_uf:
+          description: "UF da Cidade"
+          type: "string"
+
+
+      x-gx-level: "sdt_pessoa_insert"
+
+    GeneXus.Common.Messages_Message:
+      properties:
+        Id:
+          description: "Id"
+          type: "string"
+        Type:
+          description: "Type"
+          type: "integer"
+          format: "int32"
+        Description:
+          description: "Description"
+          type: "string"
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT 
+
+
+ 

@@ -1,0 +1,136 @@
+openapi: 3.0.0
+info:
+  title: "fotopessoa"
+  description: "fotopessoa"
+  version: "20250331232404"
+servers:
+  - url: http://localhost:8080/seletivojava/api/fotopessoa
+security:
+  - bearerAuth: []  
+paths:
+  /gxobject:
+    post:
+      tags:
+        - api
+      operationId: "UploadImagemDireta"
+      summary: "Faz upload direto de uma imagem no corpo da requisicao"
+      requestBody:
+        required: true
+        content:
+          image/png:
+            schema:
+              type: string
+              format: binary
+          image/jpeg:
+            schema:
+              type: string
+              format: binary
+          image/jpg:
+            schema:
+              type: string
+              format: binary
+          image/gif:
+            schema:
+              type: string
+              format: binary
+      responses:
+        200:
+          description: "Upload realizado com sucesso"
+        400:
+          description: "Requisição inválida"
+        500:
+          description: "Erro interno no servidor"
+  
+  /:
+    post:
+      tags:
+        - api  
+      operationId: "api.fotopessoa.FotoPessoaInserir"
+      summary: "Método grava a foto da pessoa."
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/FotoPessoaInserirInput"
+      
+      responses:
+        200:
+          description: "Successful operation"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/GeneXus.Common.Messages_Message"  
+
+        404:
+          description: "Not found"
+
+
+    get:
+      tags:
+        - api  
+      operationId: "api.fotopessoa.FotoPessoaSelect"
+      summary: "Método fazer a consulta de foto da pessoa e retorna o link."
+      parameters:
+        - name: "pesid"
+          in: "query"
+          required: false
+          schema:
+            type: "integer"
+            format: "int64"
+      
+      responses:
+        200:
+          description: "Successful operation"
+          content:
+            application/json:
+              schema:
+                type: "string"
+
+
+        404:
+          description: "Not found"
+
+components:
+  schemas:
+    FotoPessoaInserirInput:  
+      properties:
+        sdt_foto_pessoa_insert:
+          description: "sdt_foto_pessoa_insert"
+          $ref: "#/components/schemas/api.sdt_foto_pessoa_insert"
+
+  
+    api.sdt_foto_pessoa_insert:
+      properties:
+        pes_id:
+          description: "Id da Pessoa"
+          type: "integer"
+          format: "int64"
+        fp_foto:
+          description: "fp_foto"
+          type: "string"
+
+
+
+    GeneXus.Common.Messages_Message:
+      properties:
+        Id:
+          description: "Id"
+          type: "string"
+        Type:
+          description: "Type"
+          type: "integer"
+          format: "int32"
+        Description:
+          description: "Description"
+          type: "string"
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT 
+
+
+ 

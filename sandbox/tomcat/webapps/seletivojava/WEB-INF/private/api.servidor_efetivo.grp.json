@@ -1,0 +1,16 @@
+{
+"ObjectType":"ServiceGroup",
+"Name":"api\\servidor_efetivo",
+"BasePath":"api/servidor_efetivo",
+"Mappings":
+[
+{
+"Verb":"POST",
+"PathRegexp":"",
+"Path":"",
+"Name":"servidorefetivoinserir",
+"Bodystyle":"Wrapped",
+"VariableAlias": [{"Key":"servidorDto","Value":"Sdt_insert_servidor_efetivo"}],
+"ServiceMethod":"gxep_servidorefetivoinserir",
+"Implementation":"modelo\\servidor_efetivo_inserir"
+}]}

@@ -1,0 +1,78 @@
+openapi: 3.0.0
+info:
+  title: "efetivoslotados"
+  description: "efetivoslotados"
+  version: "20250331232404"
+servers:
+  - url: http://localhost:8080/seletivojava/api/efetivoslotados
+security:
+  - bearerAuth: []  
+paths:
+  /:
+    get:
+      tags:
+        - api  
+      operationId: "api.efetivoslotados.EfetivosLotados"
+      summary: "Método para consultar servidores efetivos lotados em determinada unidade"
+      parameters:
+        - name: "UnitId"
+          in: "query"
+          required: false
+          schema:
+            type: "integer"
+            format: "int64"
+        - name: "Pagina"
+          in: "query"
+          required: false
+          schema:
+            type: "integer"
+            format: "int32"
+        - name: "Pagesize"
+          in: "query"
+          required: false
+          schema:
+            type: "integer"
+            format: "int32"
+      
+      responses:
+        200:
+          description: "Successful operation"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/api.sdt_efetivos_lotados_sdt_efetivos_lotadosItem"  
+
+        404:
+          description: "Not found"
+
+components:
+  schemas:
+  
+    api.sdt_efetivos_lotados_sdt_efetivos_lotadosItem:
+      properties:
+        nome:
+          description: "nome"
+          type: "string"
+        idade:
+          description: "idade"
+          type: "integer"
+          format: "int32"
+        unidade_lotacao:
+          description: "unidade_lotacao"
+          type: "string"
+        fotografia:
+          description: "fotografia"
+          type: "string"
+        retorno:
+          description: "retorno"
+          type: "string"
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT 
+
+
+ 

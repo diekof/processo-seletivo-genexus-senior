@@ -1,0 +1,69 @@
+version: "3.8"
+
+services:
+  postgres:
+    image: postgres:17
+    container_name: seletivo-postgres
+    environment:
+      POSTGRES_DB: seletivo
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    networks:
+      - app-network
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+  minio:
+    image: minio/minio
+    container_name: seletivo-minio
+    command: server /data --console-address ":9001"
+    environment:
+      - MINIO_ROOT_USER=minioadmin
+      - MINIO_ROOT_PASSWORD=minioadmin
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    networks:
+      - app-network
+    volumes:
+      - minio-data:/data
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  createbuckets:
+    image: minio/mc
+    container_name: seletivo-minio-createbuckets
+    depends_on:
+      minio:
+        condition: service_healthy
+    volumes:
+    - ./minio/credentials.json:/credentials.json:ro
+    networks:
+      - app-network
+    entrypoint: ["/bin/sh", "-c", "sleep 10 && mc alias set myminio http://minio:9000 minioadmin minioadmin && (mc ls myminio/gxseletivo || mc mb myminio/gxseletivo) && mc policy set public myminio/gxseletivo && mc admin user add myminio gij3UMQ8AHt9Zyq4siGu JH0d3tSk2tswSEDXxM4U51ypcH7rlTC0A902TbU7 && mc admin policy attach myminio writeonly --user gij3UMQ8AHt9Zyq4siGu"]
+
+        
+  tomcat11:
+    image: tomcat:11-jdk17
+    container_name: seletivo-tomcat
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./tomcat/webapps:/usr/local/tomcat/webapps
+      - ./tomcat/conf/context.xml:/usr/local/tomcat/conf/context.xml
+    depends_on:
+      - postgres
+    networks:
+      - app-network
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  pgdata:
+  minio-data:
+

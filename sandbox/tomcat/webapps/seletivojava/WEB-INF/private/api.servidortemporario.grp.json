@@ -1,0 +1,46 @@
+{
+"ObjectType":"ServiceGroup",
+"Name":"api\\servidortemporario",
+"BasePath":"api/servidortemporario",
+"Mappings":
+[
+{
+"Verb":"POST",
+"PathRegexp":"",
+"Path":"",
+"Name":"servidortemporarioinserir",
+"Bodystyle":"Wrapped",
+"VariableAlias": [],
+"ServiceMethod":"gxep_servidortemporarioinserir",
+"Implementation":"api\\servidor_temporario_inserir"
+},
+{
+"Verb":"PUT",
+"PathRegexp":"",
+"Path":"",
+"Name":"servidortemporarioupdate",
+"Bodystyle":"Wrapped",
+"VariableAlias": [],
+"ServiceMethod":"gxep_servidortemporarioupdate",
+"Implementation":"api\\servidor_temporario_update"
+},
+{
+"Verb":"GET",
+"PathRegexp":"",
+"Path":"",
+"Name":"lotacaoselect",
+"Bodystyle":"Wrapped",
+"VariableAlias": [{"Key":"PesNome","Value":"Pes_nome"},{"Key":"StDataAdmissao","Value":"St_data_admissao"},{"Key":"StDataDemissao","Value":"St_data_demissao"}],
+"ServiceMethod":"gxep_lotacaoselect",
+"Implementation":"api\\servidor_temporario_select"
+},
+{
+"Verb":"DELETE",
+"PathRegexp":"([^/]+)",
+"Path":"{st_id}",
+"Name":"servidortemporariodelete",
+"Bodystyle":"Wrapped",
+"VariableAlias": [],
+"ServiceMethod":"gxep_servidortemporariodelete",
+"Implementation":"api\\servidor_temporario_delete"
+}]}

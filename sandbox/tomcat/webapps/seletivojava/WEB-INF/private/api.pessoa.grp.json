@@ -1,0 +1,16 @@
+{
+"ObjectType":"ServiceGroup",
+"Name":"api\\pessoa",
+"BasePath":"api/pessoa",
+"Mappings":
+[
+{
+"Verb":"POST",
+"PathRegexp":"",
+"Path":"",
+"Name":"pessoainserir",
+"Bodystyle":"Wrapped",
+"VariableAlias": [],
+"ServiceMethod":"gxep_pessoainserir",
+"Implementation":"api\\Pessoa_Insert"
+}]}

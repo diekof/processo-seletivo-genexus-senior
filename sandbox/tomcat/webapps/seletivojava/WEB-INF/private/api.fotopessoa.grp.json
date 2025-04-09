@@ -1,0 +1,36 @@
+{
+"ObjectType":"ServiceGroup",
+"Name":"api\\fotopessoa",
+"BasePath":"api/fotopessoa",
+"Mappings":
+[
+{
+"Verb":"POST",
+"PathRegexp":"",
+"Path":"",
+"Name":"fotopessoainserir",
+"Bodystyle":"Wrapped",
+"VariableAlias": [],
+"ServiceMethod":"gxep_fotopessoainserir",
+"Implementation":"api\\Foto_Pessoa_Insert"
+},
+{
+"Verb":"GET",
+"PathRegexp":"",
+"Path":"",
+"Name":"fotopessoaselect",
+"Bodystyle":"Wrapped",
+"VariableAlias": [{"Key":"pesid","Value":"Pes_id"}],
+"ServiceMethod":"gxep_fotopessoaselect",
+"Implementation":"api\\Foto_Pessoa_Select"
+},
+{
+"Name":"gxobject",
+"Verb":"POST",
+"Bodystyle":"Wrapped",
+"ServiceMethod":"gxobject",
+"VariableAlias": [],
+"Implementation":"gxobject",
+"PathRegexp":"gxobject",
+"Path":"gxobject"
+}]}

@@ -1,0 +1,16 @@
+{
+"ObjectType":"ServiceGroup",
+"Name":"api\\enderecofuncional",
+"BasePath":"api/enderecofuncional",
+"Mappings":
+[
+{
+"Verb":"GET",
+"PathRegexp":"",
+"Path":"",
+"Name":"enderecofuncional",
+"Bodystyle":"Wrapped",
+"VariableAlias": [],
+"ServiceMethod":"gxep_enderecofuncional",
+"Implementation":"api\\Endereco_Funcional_Select"
+}]}

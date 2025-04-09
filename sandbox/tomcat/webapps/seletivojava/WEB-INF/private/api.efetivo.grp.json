@@ -1,0 +1,16 @@
+{
+"ObjectType":"ServiceGroup",
+"Name":"api\\efetivo",
+"BasePath":"api/efetivo",
+"Mappings":
+[
+{
+"Verb":"POST",
+"PathRegexp":"",
+"Path":"",
+"Name":"servidorefetivoinsert",
+"Bodystyle":"Wrapped",
+"VariableAlias": [],
+"ServiceMethod":"gxep_servidorefetivoinsert",
+"Implementation":"api\\servidor_efetivo_insert"
+}]}

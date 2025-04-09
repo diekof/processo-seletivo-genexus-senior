@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="prgs.xsl"?>
+<Objects>
+   <Charset>UTF-8</Charset>
+   <Path>file:///C:/Program Files (x86)/GeneXus/GeneXus18/</Path>
+   <Object>
+      <ObjCls>0</ObjCls>
+      <ObjName>Modelo\pessoa</ObjName>
+      <ObjDesc>modelo.pessoa</ObjDesc>
+      <ObjLink>/seletivojava/com.modelo.pessoa</ObjLink>
+   </Object>
+   <Object>
+      <ObjCls>0</ObjCls>
+      <ObjName>modelo\unidade</ObjName>
+      <ObjDesc>modelo.unidade</ObjDesc>
+      <ObjLink>/seletivojava/com.modelo.unidade</ObjLink>
+   </Object>
+   <Object>
+      <ObjCls>0</ObjCls>
+      <ObjName>modelo\cidade</ObjName>
+      <ObjDesc>modelo.cidade</ObjDesc>
+      <ObjLink>/seletivojava/com.modelo.cidade</ObjLink>
+   </Object>
+   <Object>
+      <ObjCls>0</ObjCls>
+      <ObjName>modelo\endereco</ObjName>
+      <ObjDesc>modelo.endereco</ObjDesc>
+      <ObjLink>/seletivojava/com.modelo.endereco</ObjLink>
+   </Object>
+   <Object>
+      <ObjCls>0</ObjCls>
+      <ObjName>Modelo\foto_pessoa</ObjName>
+      <ObjDesc>modelo.foto_pessoa</ObjDesc>
+      <ObjLink>/seletivojava/com.modelo.foto_pessoa</ObjLink>
+   </Object>
+   <Object>
+      <ObjCls>0</ObjCls>
+      <ObjName>modelo\servidor_efetivo</ObjName>
+      <ObjDesc>modelo.servidor_efetivo</ObjDesc>
+      <ObjLink>/seletivojava/com.modelo.servidor_efetivo</ObjLink>
+   </Object>
+   <Object>
+      <ObjCls>0</ObjCls>
+      <ObjName>modelo\lotacao</ObjName>
+      <ObjDesc>modelo.lotacao</ObjDesc>
+      <ObjLink>/seletivojava/com.modelo.lotacao</ObjLink>
+   </Object>
+   <Object>
+      <ObjCls>0</ObjCls>
+      <ObjName>modelo\servidor_temporario</ObjName>
+      <ObjDesc>modelo.servidor_temporario</ObjDesc>
+      <ObjLink>/seletivojava/com.modelo.servidor_temporario</ObjLink>
+   </Object>
+   <Object>
+      <ObjCls>13</ObjCls>
+      <ObjName>modelo\home</ObjName>
+      <ObjDesc>modelo.home</ObjDesc>
+      <ObjLink>/seletivojava/com.modelo.home</ObjLink>
+   </Object>
+</Objects>

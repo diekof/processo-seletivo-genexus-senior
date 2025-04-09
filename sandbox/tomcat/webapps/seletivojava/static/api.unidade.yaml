@@ -1,0 +1,333 @@
+openapi: 3.0.0
+info:
+  title: "unidade"
+  description: "unidade"
+  version: "20250331232404"
+servers:
+  - url: http://localhost:8080/seletivojava/api/unidade
+security:
+  - bearerAuth: []  
+paths:
+  /:
+    post:
+      tags:
+        - api  
+      operationId: "api.unidade.UnidadeInsert"
+      summary: "Método para cadastar um novo registro da Unidade"
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UnidadeInsertInput"
+      
+      responses:
+        200:
+          description: "Successful operation"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UnidadeInsertOutput"
+        404:
+          description: "Not found"
+
+
+    get:
+      tags:
+        - api  
+      operationId: "api.unidade.UnidadeSelect"
+      summary: "Método para consultar os registros da Unidade"
+      parameters:
+        - name: "UnidId"
+          in: "query"
+          required: false
+          schema:
+            type: "integer"
+            format: "int64"
+        - name: "UnidNome"
+          in: "query"
+          required: false
+          schema:
+            type: "string"
+            
+        - name: "UnidSigla"
+          in: "query"
+          required: false
+          schema:
+            type: "string"
+            
+        - name: "Pagina"
+          in: "query"
+          required: false
+          schema:
+            type: "integer"
+            format: "int32"
+        - name: "Pagesize"
+          in: "query"
+          required: false
+          schema:
+            type: "integer"
+            format: "int32"
+      
+      responses:
+        200:
+          description: "Successful operation"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/api.sdt_unidade_select"  
+
+        404:
+          description: "Not found"
+
+
+    put:
+      tags:
+        - api  
+      operationId: "api.unidade.UnidadeUpdate"
+      summary: "Método para alterar um registro da Unidade"
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UnidadeUpdateInput"
+      
+      responses:
+        200:
+          description: "Successful operation"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/GeneXus.Common.Messages_Message"  
+
+        404:
+          description: "Not found"
+
+  /{UnidId}:
+    delete:
+      tags:
+        - api  
+      operationId: "api.unidade.UnidadeDelete"
+      summary: "Método para excluir um registro da Unidade"
+      parameters:
+        - name: "UnidId"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int64"
+      
+      responses:
+        200:
+          description: "Successful operation"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/GeneXus.Common.Messages_Message"  
+
+        404:
+          description: "Not found"
+components:
+  schemas:
+    UnidadeInsertOutput:
+      properties:
+        Messages:
+          description: "Messages"
+          type: array
+          items:
+            $ref: "#/components/schemas/GeneXus.Common.Messages_Message"
+        unit_id:
+          type: "integer"
+          format: "int32"
+
+
+
+
+    UnidadeInsertInput:  
+      properties:
+        sdt_unidade_insert:
+          description: "sdt_unidade_insert"
+          $ref: "#/components/schemas/api.sdt_unidade_insert"
+
+
+    UnidadeUpdateInput:  
+      properties:
+        sdt_unidade_update:
+          description: "sdt_unidade_update"
+          $ref: "#/components/schemas/api.sdt_unidade_update"
+
+  
+    api.sdt_unidade_insert:
+      properties:
+        unid_nome:
+          description: "Nome da Unidade"
+          type: "string"
+        unid_sigla:
+          description: "Sigla da Unidade"
+          type: "string"
+
+        endereco:
+          type: array
+          items:
+            description: enderecoItem
+            $ref: "#/components/schemas/api.sdt_unidade_insert.endereco_enderecoItem"
+
+
+    api.sdt_unidade_insert.endereco_enderecoItem:
+      properties:
+        end_tipo_logradouro:
+          description: "Tipo Logradouro"
+          type: "string"
+        end_logradouro:
+          description: "Logradouro"
+          type: "string"
+        end_numero:
+          description: "Numero"
+          type: "integer"
+          format: "int64"
+        end_bairro:
+          description: "Bairro"
+          type: "string"
+        cid_nome:
+          description: "Nome da Cidade"
+          type: "string"
+        cid_uf:
+          description: "UF da Cidade"
+          type: "string"
+
+
+      x-gx-level: "sdt_unidade_insert"
+
+    GeneXus.Common.Messages_Message:
+      properties:
+        Id:
+          description: "Id"
+          type: "string"
+        Type:
+          description: "Type"
+          type: "integer"
+          format: "int32"
+        Description:
+          description: "Description"
+          type: "string"
+
+
+
+    api.sdt_unidade_select:
+      properties:
+        unid_id:
+          description: "Id da Unidade"
+          type: "integer"
+          format: "int64"
+        unid_nome:
+          description: "Nome da Unidade"
+          type: "string"
+        unid_sigla:
+          description: "Sigla da Unidade"
+          type: "string"
+
+        endereco:
+          type: array
+          items:
+            description: enderecoItem
+            $ref: "#/components/schemas/api.sdt_unidade_select.endereco_enderecoItem"
+
+
+    api.sdt_unidade_select.endereco_enderecoItem:
+      properties:
+        end_id:
+          description: "Id do Endereço"
+          type: "integer"
+          format: "int64"
+        end_tipo_logradouro:
+          description: "Tipo Logradouro"
+          type: "string"
+        end_logradouro:
+          description: "Logradouro"
+          type: "string"
+        end_numero:
+          description: "Numero"
+          type: "integer"
+          format: "int64"
+        end_bairro:
+          description: "Bairro"
+          type: "string"
+        cid_id:
+          description: "Id da Cidade"
+          type: "integer"
+          format: "int64"
+        cid_nome:
+          description: "Nome da Cidade"
+          type: "string"
+        cid_uf:
+          description: "UF da Cidade"
+          type: "string"
+
+
+      x-gx-level: "sdt_unidade_select"
+
+    api.sdt_unidade_update:
+      properties:
+        unid_id:
+          description: "Id da Unidade"
+          type: "integer"
+          format: "int64"
+        unid_nome:
+          description: "Nome da Unidade"
+          type: "string"
+        unid_sigla:
+          description: "Sigla da Unidade"
+          type: "string"
+
+        endereco:
+          type: array
+          items:
+            description: enderecoItem
+            $ref: "#/components/schemas/api.sdt_unidade_update.endereco_enderecoItem"
+
+
+    api.sdt_unidade_update.endereco_enderecoItem:
+      properties:
+        end_id:
+          description: "Id do Endereço"
+          type: "integer"
+          format: "int64"
+        end_tipo_logradouro:
+          description: "Tipo Logradouro"
+          type: "string"
+        end_logradouro:
+          description: "Logradouro"
+          type: "string"
+        end_numero:
+          description: "Numero"
+          type: "integer"
+          format: "int64"
+        end_bairro:
+          description: "Bairro"
+          type: "string"
+        cid_id:
+          description: "Id da Cidade"
+          type: "integer"
+          format: "int64"
+        cid_nome:
+          description: "Nome da Cidade"
+          type: "string"
+        cid_uf:
+          description: "UF da Cidade"
+          type: "string"
+
+
+      x-gx-level: "sdt_unidade_update"
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT 
+ 

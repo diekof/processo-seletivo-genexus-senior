@@ -1,0 +1,258 @@
+openapi: 3.0.0
+info:
+  title: "lotacao"
+  description: "lotacao"
+  version: "20250331232404"
+servers:
+  - url: http://localhost:8080/seletivojava/api/lotacao
+security:
+  - bearerAuth: []
+paths:
+  /:
+    post:
+      tags:
+        - api  
+      operationId: "api.lotacao.LotacaoInsert"
+      summary: "Método para cadastar um novo registro da Lotação"
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LotacaoInsertInput"
+      
+      responses:
+        200:
+          description: "Successful operation"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LotacaoInsertOutput"
+        404:
+          description: "Not found"
+
+
+    get:
+      tags:
+        - api  
+      operationId: "api.lotacao.LotacaoSelect"
+      summary: "Método para consultar os registros da Lotação"
+      parameters:
+        - name: "Pagina"
+          in: "query"
+          required: false
+          schema:
+            type: "integer"
+            format: "int32"
+        - name: "Pagesize"
+          in: "query"
+          required: false
+          schema:
+            type: "integer"
+            format: "int32"
+      
+      responses:
+        200:
+          description: "Successful operation"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/api.sdt_lotacao_select"  
+
+        404:
+          description: "Not found"
+
+
+    put:
+      tags:
+        - api  
+      operationId: "api.lotacao.LotacaoUpdate"
+      summary: "Método para alterar um registro da Lotação"
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LotacaoUpdateInput"
+      
+      responses:
+        200:
+          description: "Successful operation"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/GeneXus.Common.Messages_Message"  
+
+        404:
+          description: "Not found"
+
+  /{lot_id}:
+    delete:
+      tags:
+        - api  
+      operationId: "api.lotacao.LotacaoDelete"
+      summary: "Método para excluir um registro da Lotação"
+      parameters:
+        - name: "lot_id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int64"
+      
+      responses:
+        200:
+          description: "Successful operation"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/GeneXus.Common.Messages_Message"  
+
+        404:
+          description: "Not found"
+components:
+  schemas:
+    LotacaoInsertOutput:
+      properties:
+        Messages:
+          description: "Messages"
+          type: array
+          items:
+            $ref: "#/components/schemas/GeneXus.Common.Messages_Message"
+        lot_id:
+          type: "integer"
+          format: "int64"
+
+
+
+
+    LotacaoInsertInput:  
+      properties:
+        sdt_lotacao_insert:
+          description: "sdt_lotacao_insert"
+          $ref: "#/components/schemas/api.sdt_lotacao_insert"
+
+
+    LotacaoUpdateInput:  
+      properties:
+        sdt_lotacao_update:
+          description: "sdt_lotacao_update"
+          $ref: "#/components/schemas/api.sdt_lotacao_update"
+
+  
+    api.sdt_lotacao_insert:
+      properties:
+        lot_data_lotacao:
+          description: "Data da Lotacao"
+          type: "string"
+          format: "date"
+        lot_data_remocao:
+          description: "Data Remocao"
+          type: "string"
+          format: "date"
+        lot_portaria:
+          description: "Portaria"
+          type: "string"
+        pes_id:
+          description: "Id da Pessoa"
+          type: "integer"
+          format: "int64"
+        unid_id:
+          description: "Id da Unidade"
+          type: "integer"
+          format: "int64"
+
+
+
+    GeneXus.Common.Messages_Message:
+      properties:
+        Id:
+          description: "Id"
+          type: "string"
+        Type:
+          description: "Type"
+          type: "integer"
+          format: "int32"
+        Description:
+          description: "Description"
+          type: "string"
+
+
+
+    api.sdt_lotacao_select:
+      properties:
+        lot_id:
+          description: "Id da Lotacao"
+          type: "integer"
+          format: "int64"
+        lot_data_lotacao:
+          description: "Data da Lotacao"
+          type: "string"
+          format: "date"
+        lot_data_remocao:
+          description: "Data Remocao"
+          type: "string"
+          format: "date"
+        lot_portaria:
+          description: "Portaria"
+          type: "string"
+        pes_id:
+          description: "Id da Pessoa"
+          type: "integer"
+          format: "int64"
+        pes_nome:
+          description: "Nome da Pessoa"
+          type: "string"
+        unid_id:
+          description: "Id da Unidade"
+          type: "integer"
+          format: "int64"
+        unid_nome:
+          description: "Nome da Unidade"
+          type: "string"
+
+
+
+    api.sdt_lotacao_update:
+      properties:
+        lot_id:
+          description: "Id da Lotacao"
+          type: "integer"
+          format: "int64"
+        lot_data_lotacao:
+          description: "Data da Lotacao"
+          type: "string"
+          format: "date"
+        lot_data_remocao:
+          description: "Data Remocao"
+          type: "string"
+          format: "date"
+        lot_portaria:
+          description: "Portaria"
+          type: "string"
+        pes_id:
+          description: "Id da Pessoa"
+          type: "integer"
+          format: "int64"
+        unid_id:
+          description: "Id da Unidade"
+          type: "integer"
+          format: "int64"
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT 
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT 
+
+ 

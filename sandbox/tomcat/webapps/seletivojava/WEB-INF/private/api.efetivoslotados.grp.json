@@ -1,0 +1,16 @@
+{
+"ObjectType":"ServiceGroup",
+"Name":"api\\efetivoslotados",
+"BasePath":"api/efetivoslotados",
+"Mappings":
+[
+{
+"Verb":"GET",
+"PathRegexp":"",
+"Path":"",
+"Name":"efetivoslotados",
+"Bodystyle":"Wrapped",
+"VariableAlias": [{"Key":"UnitId","Value":"Unid_id"}],
+"ServiceMethod":"gxep_efetivoslotados",
+"Implementation":"api\\Efetivos_Lotados_Select"
+}]}

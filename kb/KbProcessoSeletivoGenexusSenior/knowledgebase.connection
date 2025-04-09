@@ -1,0 +1,11 @@
+﻿<ConnectionInformation>
+	<DBName>GX_KB_KbProcessoSeletivoGenexusSenior</DBName>
+	<IntegratedSecurity>True</IntegratedSecurity>
+	<ServerInstance>(LocalDB)\MSSQLLocalDB</ServerInstance>
+	<CreateDbInKbFolder>True</CreateDbInKbFolder>
+	<Directory>C:\Des\Genexus\KbProcessoSeletivoGenexusSenior</Directory>
+	<DataFile>GX_KB_KbProcessoSeletivoGenexusSenior.mdf</DataFile>
+	<LogFile>GX_KB_KbProcessoSeletivoGenexusSenior_log.ldf</LogFile>
+	<HostName>DESKTOP-58ALVT4</HostName>
+	<DetachOnClose>False</DetachOnClose>
+</ConnectionInformation>

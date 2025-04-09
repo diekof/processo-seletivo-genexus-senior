@@ -1,0 +1,379 @@
+openapi: 3.0.0
+info:
+  title: "servefetivo"
+  description: "servefetivo"
+  version: "20250331232404"
+servers:
+  - url: http://localhost:8080/seletivojava/api/servefetivo
+security:
+  - bearerAuth: []  
+paths:
+  /:
+    post:
+      tags:
+        - api  
+      operationId: "api.servefetivo.ServEfetivoInsert"
+      summary: "Método para cadastar um servidor efetivo"
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ServEfetivoInsertInput"
+      
+      responses:
+        200:
+          description: "Successful operation"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/GeneXus.Common.Messages_Message"  
+
+        404:
+          description: "Not found"
+
+
+    get:
+      tags:
+        - api  
+      operationId: "api.servefetivo.ServidorEfetivoSelect"
+      summary: "Método para consultar os registros da Lotação"
+      parameters:
+        - name: "nome"
+          in: "query"
+          required: false
+          schema:
+            type: "string"
+            
+        - name: "matricula"
+          in: "query"
+          required: false
+          schema:
+            type: "string"
+            
+        - name: "Pagina"
+          in: "query"
+          required: false
+          schema:
+            type: "integer"
+            format: "int32"
+        - name: "Pagesize"
+          in: "query"
+          required: false
+          schema:
+            type: "integer"
+            format: "int32"
+      
+      responses:
+        200:
+          description: "Successful operation"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/api.sdt_servidor_efetivo_select_sdt_servidor_efetivo_selectItem"  
+
+        404:
+          description: "Not found"
+
+
+    put:
+      tags:
+        - api  
+      operationId: "api.servefetivo.ServidorEfetivoUpdate"
+      summary: "Método para alterar um registro da servidor efetivo"
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ServidorEfetivoUpdateInput"
+      
+      responses:
+        200:
+          description: "Successful operation"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/GeneXus.Common.Messages_Message"  
+
+        404:
+          description: "Not found"
+
+  /{pes_id}:
+    delete:
+      tags:
+        - api  
+      operationId: "api.servefetivo.ServidorEfetivoDelete"
+      summary: "Método para excluir um registro da servidor efetivo"
+      parameters:
+        - name: "pes_id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int64"
+      
+      responses:
+        200:
+          description: "Successful operation"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/GeneXus.Common.Messages_Message"  
+
+        404:
+          description: "Not found"
+components:
+  schemas:
+    ServEfetivoInsertInput:  
+      properties:
+        sdt_servefetivo_insert:
+          description: "sdt_servefetivo_insert"
+          $ref: "#/components/schemas/api.sdt_servefetivo_insert"
+
+
+    ServidorEfetivoUpdateInput:  
+      properties:
+        sdt_servefetivo_update:
+          description: "sdt_servefetivo_update"
+          $ref: "#/components/schemas/api.sdt_servefetivo_update"
+
+  
+    api.sdt_servefetivo_insert:
+      properties:
+        pes_id:
+          description: "Id da Pessoa"
+          type: "integer"
+          format: "int64"
+        se_matricula:
+          description: "Matrícula do Servidor Efetivo"
+          type: "string"
+        pes_nome:
+          description: "Nome da Pessoa"
+          type: "string"
+        pes_data_nascimento:
+          description: "Data de Nascimento"
+          type: "string"
+          format: "date"
+        pes_sexo:
+          description: "Sexo"
+          type: "string"
+        pes_mae:
+          description: "Nome da Mãe"
+          type: "string"
+        pes_pai:
+          description: "Nome do Pai"
+          type: "string"
+
+        endereco:
+          type: array
+          items:
+            description: enderecoItem
+            $ref: "#/components/schemas/api.sdt_servefetivo_insert.endereco_enderecoItem"
+
+
+    api.sdt_servefetivo_insert.endereco_enderecoItem:
+      properties:
+        end_tipo_logradouro:
+          description: "Tipo Logradouro"
+          type: "string"
+        end_logradouro:
+          description: "Logradouro"
+          type: "string"
+        end_numero:
+          description: "Numero"
+          type: "integer"
+          format: "int64"
+        end_bairro:
+          description: "Bairro"
+          type: "string"
+        cid_nome:
+          description: "Nome da Cidade"
+          type: "string"
+        cid_uf:
+          description: "UF da Cidade"
+          type: "string"
+
+
+      x-gx-level: "sdt_servefetivo_insert"
+
+    GeneXus.Common.Messages_Message:
+      properties:
+        Id:
+          description: "Id"
+          type: "string"
+        Type:
+          description: "Type"
+          type: "integer"
+          format: "int32"
+        Description:
+          description: "Description"
+          type: "string"
+
+
+
+    api.sdt_servidor_efetivo_select_sdt_servidor_efetivo_selectItem:
+      properties:
+        pes_id:
+          description: "Id da Pessoa"
+          type: "integer"
+          format: "int64"
+        se_matricula:
+          description: "Matrícula do Servidor Efetivo"
+          type: "string"
+        pes_pai:
+          description: "Nome do Pai"
+          type: "string"
+        pes_mae:
+          description: "Nome da Mãe"
+          type: "string"
+        pes_sexo:
+          description: "Sexo"
+          type: "string"
+        pes_data_nascimento:
+          description: "Data de Nascimento"
+          type: "string"
+          format: "date"
+        pes_nome:
+          description: "Nome da Pessoa"
+          type: "string"
+        fp_hash:
+          description: "Hash"
+          type: "string"
+        fp_bucket:
+          description: "Bucket"
+          type: "string"
+        fp_data:
+          description: "Data"
+          type: "string"
+          format: "date"
+
+        endereco:
+          type: array
+          items:
+            description: enderecoItem
+            $ref: "#/components/schemas/api.sdt_servidor_efetivo_select.endereco_enderecoItem"
+
+
+    api.sdt_servidor_efetivo_select.endereco_enderecoItem:
+      properties:
+        end_id:
+          description: "Id do Endereço"
+          type: "integer"
+          format: "int64"
+        end_tipo_logradouro:
+          description: "Tipo Logradouro"
+          type: "string"
+        end_logradouro:
+          description: "Logradouro"
+          type: "string"
+        end_numero:
+          description: "Numero"
+          type: "integer"
+          format: "int64"
+        end_bairro:
+          description: "Bairro"
+          type: "string"
+        cid_id:
+          description: "Id da Cidade"
+          type: "integer"
+          format: "int64"
+        cid_nome:
+          description: "Nome da Cidade"
+          type: "string"
+        cid_uf:
+          description: "UF da Cidade"
+          type: "string"
+
+
+      x-gx-level: "sdt_servidor_efetivo_select"
+
+    api.sdt_servefetivo_update:
+      properties:
+        pes_id:
+          description: "Id da Pessoa"
+          type: "integer"
+          format: "int64"
+        se_matricula:
+          description: "Matrícula do Servidor Efetivo"
+          type: "string"
+        pes_nome:
+          description: "Nome da Pessoa"
+          type: "string"
+        pes_data_nascimento:
+          description: "Data de Nascimento"
+          type: "string"
+          format: "date"
+        pes_sexo:
+          description: "Sexo"
+          type: "string"
+        pes_mae:
+          description: "Nome da Mãe"
+          type: "string"
+        pes_pai:
+          description: "Nome do Pai"
+          type: "string"
+        fp_hash:
+          description: "Hash"
+          type: "string"
+        fp_bucket:
+          description: "Bucket"
+          type: "string"
+        fp_data:
+          description: "Data"
+          type: "string"
+          format: "date"
+
+        endereco:
+          type: array
+          items:
+            description: enderecoItem
+            $ref: "#/components/schemas/api.sdt_servefetivo_update.endereco_enderecoItem"
+
+
+    api.sdt_servefetivo_update.endereco_enderecoItem:
+      properties:
+        end_id:
+          description: "Id do Endereço"
+          type: "integer"
+          format: "int64"
+        end_tipo_logradouro:
+          description: "Tipo Logradouro"
+          type: "string"
+        end_logradouro:
+          description: "Logradouro"
+          type: "string"
+        end_numero:
+          description: "Numero"
+          type: "integer"
+          format: "int64"
+        end_bairro:
+          description: "Bairro"
+          type: "string"
+        cid_id:
+          description: "Id da Cidade"
+          type: "integer"
+          format: "int64"
+        cid_nome:
+          description: "Nome da Cidade"
+          type: "string"
+        cid_uf:
+          description: "UF da Cidade"
+          type: "string"
+
+
+      x-gx-level: "sdt_servefetivo_update"
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT 
+ 

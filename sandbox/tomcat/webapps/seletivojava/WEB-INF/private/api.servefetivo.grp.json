@@ -1,0 +1,46 @@
+{
+"ObjectType":"ServiceGroup",
+"Name":"api\\servefetivo",
+"BasePath":"api/servefetivo",
+"Mappings":
+[
+{
+"Verb":"POST",
+"PathRegexp":"",
+"Path":"",
+"Name":"servefetivoinsert",
+"Bodystyle":"Wrapped",
+"VariableAlias": [],
+"ServiceMethod":"gxep_servefetivoinsert",
+"Implementation":"api\\servefetivo_insert"
+},
+{
+"Verb":"PUT",
+"PathRegexp":"",
+"Path":"",
+"Name":"servidorefetivoupdate",
+"Bodystyle":"Wrapped",
+"VariableAlias": [],
+"ServiceMethod":"gxep_servidorefetivoupdate",
+"Implementation":"api\\servefetivo_update"
+},
+{
+"Verb":"GET",
+"PathRegexp":"",
+"Path":"",
+"Name":"servidorefetivoselect",
+"Bodystyle":"Wrapped",
+"VariableAlias": [{"Key":"nome","Value":"Pes_nome"},{"Key":"matricula","Value":"Se_matricula"}],
+"ServiceMethod":"gxep_servidorefetivoselect",
+"Implementation":"api\\servidor_efetivo_select"
+},
+{
+"Verb":"DELETE",
+"PathRegexp":"([^/]+)",
+"Path":"{pes_id}",
+"Name":"servidorefetivodelete",
+"Bodystyle":"Wrapped",
+"VariableAlias": [],
+"ServiceMethod":"gxep_servidorefetivodelete",
+"Implementation":"api\\servidor_efetivo_delete"
+}]}

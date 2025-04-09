@@ -1,0 +1,753 @@
+openapi: 3.0.0
+info:
+  title: "seletivo"
+  version: "20250404174826"
+servers:
+  - url: http://localhost:8080/seletivojava/rest
+paths:
+components:
+  schemas:
+    api.sdt_efetivos_lotados_sdt_efetivos_lotadosItem:
+      properties:
+        nome:
+          description: "nome"
+          type: "string"
+        idade:
+          description: "idade"
+          type: "integer"
+          format: "int32"
+        unidade_lotacao:
+          description: "unidade_lotacao"
+          type: "string"
+        fotografia:
+          description: "fotografia"
+          type: "string"
+        retorno:
+          description: "retorno"
+          type: "string"
+    api.sdt_end_funcional_sdt_end_funcionalItem:
+      properties:
+        pes_nome:
+          description: "Nome da Pessoa"
+          type: "string"
+        retorno:
+          description: "retorno"
+          type: "string"
+        endereco:
+          type: array
+          items:
+            description: enderecoItem
+            $ref: "#/components/schemas/api.sdt_end_funcional.endereco_enderecoItem"
+    api.sdt_end_funcional.endereco_enderecoItem:
+      properties:
+        end_id:
+          description: "Id do Endereço"
+          type: "integer"
+          format: "int64"
+        end_tipo_logradouro:
+          description: "Tipo Logradouro"
+          type: "string"
+        end_logradouro:
+          description: "Logradouro"
+          type: "string"
+        end_numero:
+          description: "Numero"
+          type: "integer"
+          format: "int64"
+        end_bairro:
+          description: "Bairro"
+          type: "string"
+        cid_id:
+          description: "Id da Cidade"
+          type: "integer"
+          format: "int64"
+        cid_nome:
+          description: "Nome da Cidade"
+          type: "string"
+        cid_uf:
+          description: "UF da Cidade"
+          type: "string"
+      x-gx-level: "sdt_end_funcional"
+    api.sdt_foto_pessoa_insert:
+      properties:
+        pes_id:
+          description: "Id da Pessoa"
+          type: "integer"
+          format: "int64"
+        fp_foto:
+          description: "fp_foto"
+          type: "string"
+    api.sdt_lotacao_insert:
+      properties:
+        lot_data_lotacao:
+          description: "Data da Lotacao"
+          type: "string"
+          format: "date"
+        lot_data_remocao:
+          description: "Data Remocao"
+          type: "string"
+          format: "date"
+        lot_portaria:
+          description: "Portaria"
+          type: "string"
+        pes_id:
+          description: "Id da Pessoa"
+          type: "integer"
+          format: "int64"
+        unid_id:
+          description: "Id da Unidade"
+          type: "integer"
+          format: "int64"
+    api.sdt_lotacao_select:
+      properties:
+        lot_id:
+          description: "Id da Lotacao"
+          type: "integer"
+          format: "int64"
+        lot_data_lotacao:
+          description: "Data da Lotacao"
+          type: "string"
+          format: "date"
+        lot_data_remocao:
+          description: "Data Remocao"
+          type: "string"
+          format: "date"
+        lot_portaria:
+          description: "Portaria"
+          type: "string"
+        pes_id:
+          description: "Id da Pessoa"
+          type: "integer"
+          format: "int64"
+        pes_nome:
+          description: "Nome da Pessoa"
+          type: "string"
+        unid_id:
+          description: "Id da Unidade"
+          type: "integer"
+          format: "int64"
+        unid_nome:
+          description: "Nome da Unidade"
+          type: "string"
+    api.sdt_lotacao_update:
+      properties:
+        lot_id:
+          description: "Id da Lotacao"
+          type: "integer"
+          format: "int64"
+        lot_data_lotacao:
+          description: "Data da Lotacao"
+          type: "string"
+          format: "date"
+        lot_data_remocao:
+          description: "Data Remocao"
+          type: "string"
+          format: "date"
+        lot_portaria:
+          description: "Portaria"
+          type: "string"
+        pes_id:
+          description: "Id da Pessoa"
+          type: "integer"
+          format: "int64"
+        unid_id:
+          description: "Id da Unidade"
+          type: "integer"
+          format: "int64"
+    api.sdt_pessoa_insert:
+      properties:
+        pes_id:
+          description: "Id da Pessoa"
+          type: "integer"
+          format: "int64"
+        pes_nome:
+          description: "Nome da Pessoa"
+          type: "string"
+        pes_data_nascimento:
+          description: "Data de Nascimento"
+          type: "string"
+          format: "date"
+        pes_sexo:
+          description: "Sexo"
+          type: "string"
+        pes_mae:
+          description: "Nome da Mãe"
+          type: "string"
+        pes_pai:
+          description: "Nome do Pai"
+          type: "string"
+        fp_hash:
+          description: "Hash"
+          type: "string"
+        fp_bucket:
+          description: "Bucket"
+          type: "string"
+        fp_data:
+          description: "Data"
+          type: "string"
+          format: "date"
+        endereco:
+          type: array
+          items:
+            description: enderecoItem
+            $ref: "#/components/schemas/api.sdt_pessoa_insert.endereco_enderecoItem"
+    api.sdt_pessoa_insert.endereco_enderecoItem:
+      properties:
+        end_id:
+          description: "Id do Endereço"
+          type: "integer"
+          format: "int64"
+        end_tipo_logradouro:
+          description: "Tipo Logradouro"
+          type: "string"
+        end_logradouro:
+          description: "Logradouro"
+          type: "string"
+        end_numero:
+          description: "Numero"
+          type: "integer"
+          format: "int64"
+        end_bairro:
+          description: "Bairro"
+          type: "string"
+        cid_id:
+          description: "Id da Cidade"
+          type: "integer"
+          format: "int64"
+        cid_nome:
+          description: "Nome da Cidade"
+          type: "string"
+        cid_uf:
+          description: "UF da Cidade"
+          type: "string"
+      x-gx-level: "sdt_pessoa_insert"
+    api.sdt_servefetivo_insert:
+      properties:
+        pes_id:
+          description: "Id da Pessoa"
+          type: "integer"
+          format: "int64"
+        se_matricula:
+          description: "Matrícula do Servidor Efetivo"
+          type: "string"
+        pes_nome:
+          description: "Nome da Pessoa"
+          type: "string"
+        pes_data_nascimento:
+          description: "Data de Nascimento"
+          type: "string"
+          format: "date"
+        pes_sexo:
+          description: "Sexo"
+          type: "string"
+        pes_mae:
+          description: "Nome da Mãe"
+          type: "string"
+        pes_pai:
+          description: "Nome do Pai"
+          type: "string"
+        endereco:
+          type: array
+          items:
+            description: enderecoItem
+            $ref: "#/components/schemas/api.sdt_servefetivo_insert.endereco_enderecoItem"
+    api.sdt_servefetivo_insert.endereco_enderecoItem:
+      properties:
+        end_tipo_logradouro:
+          description: "Tipo Logradouro"
+          type: "string"
+        end_logradouro:
+          description: "Logradouro"
+          type: "string"
+        end_numero:
+          description: "Numero"
+          type: "integer"
+          format: "int64"
+        end_bairro:
+          description: "Bairro"
+          type: "string"
+        cid_nome:
+          description: "Nome da Cidade"
+          type: "string"
+        cid_uf:
+          description: "UF da Cidade"
+          type: "string"
+      x-gx-level: "sdt_servefetivo_insert"
+    api.sdt_servefetivo_update:
+      properties:
+        pes_id:
+          description: "Id da Pessoa"
+          type: "integer"
+          format: "int64"
+        se_matricula:
+          description: "Matrícula do Servidor Efetivo"
+          type: "string"
+        pes_nome:
+          description: "Nome da Pessoa"
+          type: "string"
+        pes_data_nascimento:
+          description: "Data de Nascimento"
+          type: "string"
+          format: "date"
+        pes_sexo:
+          description: "Sexo"
+          type: "string"
+        pes_mae:
+          description: "Nome da Mãe"
+          type: "string"
+        pes_pai:
+          description: "Nome do Pai"
+          type: "string"
+        fp_hash:
+          description: "Hash"
+          type: "string"
+        fp_bucket:
+          description: "Bucket"
+          type: "string"
+        fp_data:
+          description: "Data"
+          type: "string"
+          format: "date"
+        endereco:
+          type: array
+          items:
+            description: enderecoItem
+            $ref: "#/components/schemas/api.sdt_servefetivo_update.endereco_enderecoItem"
+    api.sdt_servefetivo_update.endereco_enderecoItem:
+      properties:
+        end_id:
+          description: "Id do Endereço"
+          type: "integer"
+          format: "int64"
+        end_tipo_logradouro:
+          description: "Tipo Logradouro"
+          type: "string"
+        end_logradouro:
+          description: "Logradouro"
+          type: "string"
+        end_numero:
+          description: "Numero"
+          type: "integer"
+          format: "int64"
+        end_bairro:
+          description: "Bairro"
+          type: "string"
+        cid_id:
+          description: "Id da Cidade"
+          type: "integer"
+          format: "int64"
+        cid_nome:
+          description: "Nome da Cidade"
+          type: "string"
+        cid_uf:
+          description: "UF da Cidade"
+          type: "string"
+      x-gx-level: "sdt_servefetivo_update"
+    api.sdt_servidor_efetivo_select_sdt_servidor_efetivo_selectItem:
+      properties:
+        pes_id:
+          description: "Id da Pessoa"
+          type: "integer"
+          format: "int64"
+        se_matricula:
+          description: "Matrícula do Servidor Efetivo"
+          type: "string"
+        pes_pai:
+          description: "Nome do Pai"
+          type: "string"
+        pes_mae:
+          description: "Nome da Mãe"
+          type: "string"
+        pes_sexo:
+          description: "Sexo"
+          type: "string"
+        pes_data_nascimento:
+          description: "Data de Nascimento"
+          type: "string"
+          format: "date"
+        pes_nome:
+          description: "Nome da Pessoa"
+          type: "string"
+        fp_hash:
+          description: "Hash"
+          type: "string"
+        fp_bucket:
+          description: "Bucket"
+          type: "string"
+        fp_data:
+          description: "Data"
+          type: "string"
+          format: "date"
+        endereco:
+          type: array
+          items:
+            description: enderecoItem
+            $ref: "#/components/schemas/api.sdt_servidor_efetivo_select.endereco_enderecoItem"
+    api.sdt_servidor_efetivo_select.endereco_enderecoItem:
+      properties:
+        end_id:
+          description: "Id do Endereço"
+          type: "integer"
+          format: "int64"
+        end_tipo_logradouro:
+          description: "Tipo Logradouro"
+          type: "string"
+        end_logradouro:
+          description: "Logradouro"
+          type: "string"
+        end_numero:
+          description: "Numero"
+          type: "integer"
+          format: "int64"
+        end_bairro:
+          description: "Bairro"
+          type: "string"
+        cid_id:
+          description: "Id da Cidade"
+          type: "integer"
+          format: "int64"
+        cid_nome:
+          description: "Nome da Cidade"
+          type: "string"
+        cid_uf:
+          description: "UF da Cidade"
+          type: "string"
+      x-gx-level: "sdt_servidor_efetivo_select"
+    api.sdt_servidor_temporario_insert:
+      properties:
+        st_data_demissao:
+          description: "st_data_demissao"
+          type: "string"
+          format: "date"
+        st_data_admissao:
+          description: "st_data_admissao"
+          type: "string"
+          format: "date"
+        pes_pai:
+          description: "Nome do Pai"
+          type: "string"
+        pes_mae:
+          description: "Nome da Mãe"
+          type: "string"
+        pes_sexo:
+          description: "Sexo"
+          type: "string"
+        pes_data_nascimento:
+          description: "Data de Nascimento"
+          type: "string"
+          format: "date"
+        pes_nome:
+          description: "Nome da Pessoa"
+          type: "string"
+        endereco:
+          type: array
+          items:
+            description: enderecoItem
+            $ref: "#/components/schemas/api.sdt_servidor_temporario_insert.endereco_enderecoItem"
+    api.sdt_servidor_temporario_insert.endereco_enderecoItem:
+      properties:
+        end_id:
+          description: "Id do Endereço"
+          type: "integer"
+          format: "int64"
+        end_tipo_logradouro:
+          description: "Tipo Logradouro"
+          type: "string"
+        end_logradouro:
+          description: "Logradouro"
+          type: "string"
+        end_numero:
+          description: "Numero"
+          type: "integer"
+          format: "int64"
+        end_bairro:
+          description: "Bairro"
+          type: "string"
+        cid_id:
+          description: "Id da Cidade"
+          type: "integer"
+          format: "int64"
+        cid_nome:
+          description: "Nome da Cidade"
+          type: "string"
+        cid_uf:
+          description: "UF da Cidade"
+          type: "string"
+      x-gx-level: "sdt_servidor_temporario_insert"
+    api.sdt_servidor_temporario_select_sdt_servidor_temporario_selectItem:
+      properties:
+        st_data_demissao:
+          description: "st_data_demissao"
+          type: "string"
+          format: "date"
+        st_data_admissao:
+          description: "st_data_admissao"
+          type: "string"
+          format: "date"
+        pes_pai:
+          description: "Nome do Pai"
+          type: "string"
+        pes_mae:
+          description: "Nome da Mãe"
+          type: "string"
+        pes_sexo:
+          description: "Sexo"
+          type: "string"
+        pes_data_nascimento:
+          description: "Data de Nascimento"
+          type: "string"
+          format: "date"
+        pes_nome:
+          description: "Nome da Pessoa"
+          type: "string"
+        fp_hash:
+          description: "Hash"
+          type: "string"
+        fp_bucket:
+          description: "Bucket"
+          type: "string"
+        fp_data:
+          description: "Data"
+          type: "string"
+          format: "date"
+        endereco:
+          type: array
+          items:
+            description: enderecoItem
+            $ref: "#/components/schemas/api.sdt_servidor_temporario_select.endereco_enderecoItem"
+    api.sdt_servidor_temporario_select.endereco_enderecoItem:
+      properties:
+        end_id:
+          description: "Id do Endereço"
+          type: "integer"
+          format: "int64"
+        end_tipo_logradouro:
+          description: "Tipo Logradouro"
+          type: "string"
+        end_logradouro:
+          description: "Logradouro"
+          type: "string"
+        end_numero:
+          description: "Numero"
+          type: "integer"
+          format: "int64"
+        end_bairro:
+          description: "Bairro"
+          type: "string"
+        cid_id:
+          description: "Id da Cidade"
+          type: "integer"
+          format: "int64"
+        cid_nome:
+          description: "Nome da Cidade"
+          type: "string"
+        cid_uf:
+          description: "UF da Cidade"
+          type: "string"
+      x-gx-level: "sdt_servidor_temporario_select"
+    api.sdt_servidor_temporario_update:
+      properties:
+        st_id:
+          description: "st_id"
+          type: "integer"
+          format: "int64"
+        st_data_demissao:
+          description: "st_data_demissao"
+          type: "string"
+          format: "date"
+        st_data_admissao:
+          description: "st_data_admissao"
+          type: "string"
+          format: "date"
+        pes_id:
+          description: "Id da Pessoa"
+          type: "integer"
+          format: "int64"
+        endereco:
+          type: array
+          items:
+            description: enderecoItem
+            $ref: "#/components/schemas/api.sdt_servidor_temporario_update.endereco_enderecoItem"
+    api.sdt_servidor_temporario_update.endereco_enderecoItem:
+      properties:
+        end_id:
+          description: "Id do Endereço"
+          type: "integer"
+          format: "int64"
+        end_tipo_logradouro:
+          description: "Tipo Logradouro"
+          type: "string"
+        end_logradouro:
+          description: "Logradouro"
+          type: "string"
+        end_numero:
+          description: "Numero"
+          type: "integer"
+          format: "int64"
+        end_bairro:
+          description: "Bairro"
+          type: "string"
+        cid_id:
+          description: "Id da Cidade"
+          type: "integer"
+          format: "int64"
+        cid_nome:
+          description: "Nome da Cidade"
+          type: "string"
+        cid_uf:
+          description: "UF da Cidade"
+          type: "string"
+      x-gx-level: "sdt_servidor_temporario_update"
+    api.sdt_unidade_insert:
+      properties:
+        unid_nome:
+          description: "Nome da Unidade"
+          type: "string"
+        unid_sigla:
+          description: "Sigla da Unidade"
+          type: "string"
+        endereco:
+          type: array
+          items:
+            description: enderecoItem
+            $ref: "#/components/schemas/api.sdt_unidade_insert.endereco_enderecoItem"
+    api.sdt_unidade_insert.endereco_enderecoItem:
+      properties:
+        end_tipo_logradouro:
+          description: "Tipo Logradouro"
+          type: "string"
+        end_logradouro:
+          description: "Logradouro"
+          type: "string"
+        end_numero:
+          description: "Numero"
+          type: "integer"
+          format: "int64"
+        end_bairro:
+          description: "Bairro"
+          type: "string"
+        cid_nome:
+          description: "Nome da Cidade"
+          type: "string"
+        cid_uf:
+          description: "UF da Cidade"
+          type: "string"
+      x-gx-level: "sdt_unidade_insert"
+    api.sdt_unidade_select:
+      properties:
+        unid_id:
+          description: "Id da Unidade"
+          type: "integer"
+          format: "int64"
+        unid_nome:
+          description: "Nome da Unidade"
+          type: "string"
+        unid_sigla:
+          description: "Sigla da Unidade"
+          type: "string"
+        endereco:
+          type: array
+          items:
+            description: enderecoItem
+            $ref: "#/components/schemas/api.sdt_unidade_select.endereco_enderecoItem"
+    api.sdt_unidade_select.endereco_enderecoItem:
+      properties:
+        end_id:
+          description: "Id do Endereço"
+          type: "integer"
+          format: "int64"
+        end_tipo_logradouro:
+          description: "Tipo Logradouro"
+          type: "string"
+        end_logradouro:
+          description: "Logradouro"
+          type: "string"
+        end_numero:
+          description: "Numero"
+          type: "integer"
+          format: "int64"
+        end_bairro:
+          description: "Bairro"
+          type: "string"
+        cid_id:
+          description: "Id da Cidade"
+          type: "integer"
+          format: "int64"
+        cid_nome:
+          description: "Nome da Cidade"
+          type: "string"
+        cid_uf:
+          description: "UF da Cidade"
+          type: "string"
+      x-gx-level: "sdt_unidade_select"
+    api.sdt_unidade_update:
+      properties:
+        unid_id:
+          description: "Id da Unidade"
+          type: "integer"
+          format: "int64"
+        unid_nome:
+          description: "Nome da Unidade"
+          type: "string"
+        unid_sigla:
+          description: "Sigla da Unidade"
+          type: "string"
+        endereco:
+          type: array
+          items:
+            description: enderecoItem
+            $ref: "#/components/schemas/api.sdt_unidade_update.endereco_enderecoItem"
+    api.sdt_unidade_update.endereco_enderecoItem:
+      properties:
+        end_id:
+          description: "Id do Endereço"
+          type: "integer"
+          format: "int64"
+        end_tipo_logradouro:
+          description: "Tipo Logradouro"
+          type: "string"
+        end_logradouro:
+          description: "Logradouro"
+          type: "string"
+        end_numero:
+          description: "Numero"
+          type: "integer"
+          format: "int64"
+        end_bairro:
+          description: "Bairro"
+          type: "string"
+        cid_id:
+          description: "Id da Cidade"
+          type: "integer"
+          format: "int64"
+        cid_nome:
+          description: "Nome da Cidade"
+          type: "string"
+        cid_uf:
+          description: "UF da Cidade"
+          type: "string"
+      x-gx-level: "sdt_unidade_update"
+    GeneXus.Common.Messages_Message:
+      properties:
+        Id:
+          description: "Id"
+          type: "string"
+        Type:
+          description: "Type"
+          type: "integer"
+          format: "int32"
+        Description:
+          description: "Description"
+          type: "string"
+    modelo.sdt_cidade:
+      properties:
+        cid_id:
+          description: "Id da Cidade"
+          type: "integer"
+          format: "int64"
+        cid_nome:
+          description: "Nome da Cidade"
+          type: "string"
+        cid_uf:
+          description: "UF da Cidade"
+          type: "string"

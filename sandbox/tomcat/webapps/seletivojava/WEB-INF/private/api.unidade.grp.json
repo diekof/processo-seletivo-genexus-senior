@@ -1,0 +1,46 @@
+{
+"ObjectType":"ServiceGroup",
+"Name":"api\\unidade",
+"BasePath":"api/unidade",
+"Mappings":
+[
+{
+"Verb":"POST",
+"PathRegexp":"",
+"Path":"",
+"Name":"unidadeinsert",
+"Bodystyle":"Wrapped",
+"VariableAlias": [{"Key":"unitid","Value":"Unit_id"}],
+"ServiceMethod":"gxep_unidadeinsert",
+"Implementation":"api\\Unidade_Insert"
+},
+{
+"Verb":"PUT",
+"PathRegexp":"",
+"Path":"",
+"Name":"unidadeupdate",
+"Bodystyle":"Wrapped",
+"VariableAlias": [],
+"ServiceMethod":"gxep_unidadeupdate",
+"Implementation":"api\\Unidade_Update"
+},
+{
+"Verb":"GET",
+"PathRegexp":"",
+"Path":"",
+"Name":"unidadeselect",
+"Bodystyle":"Wrapped",
+"VariableAlias": [{"Key":"UnidId","Value":"Unid_id"},{"Key":"UnidNome","Value":"Unid_nome"},{"Key":"UnidSigla","Value":"Unid_sigla"}],
+"ServiceMethod":"gxep_unidadeselect",
+"Implementation":"api\\DP_Unidade_Select"
+},
+{
+"Verb":"DELETE",
+"PathRegexp":"([^/]+)",
+"Path":"{unid_id}",
+"Name":"unidadedelete",
+"Bodystyle":"Wrapped",
+"VariableAlias": [{"Key":"UnidId","Value":"Unid_id"}],
+"ServiceMethod":"gxep_unidadedelete",
+"Implementation":"api\\Unidade_Delete"
+}]}

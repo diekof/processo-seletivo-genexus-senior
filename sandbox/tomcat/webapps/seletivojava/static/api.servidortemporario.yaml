@@ -1,0 +1,378 @@
+openapi: 3.0.0
+info:
+  title: "servidortemporario"
+  description: "servidortemporario"
+  version: "20250331232404"
+servers:
+  - url: http://localhost:8080/seletivojava/api/servidortemporario
+security:
+  - bearerAuth: []  
+paths:
+  /:
+    post:
+      tags:
+        - api  
+      operationId: "api.servidortemporario.ServidorTemporarioinserir"
+      summary: "Método para cadastar um servidor temporário"
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ServidorTemporarioinserirInput"
+      
+      responses:
+        200:
+          description: "Successful operation"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/GeneXus.Common.Messages_Message"  
+
+        404:
+          description: "Not found"
+
+
+    get:
+      tags:
+        - api  
+      operationId: "api.servidortemporario.LotacaoSelect"
+      summary: "Método para consultar os registros da Lotação"
+      parameters:
+        - name: "PesNome"
+          in: "query"
+          required: false
+          schema:
+            type: "string"
+            
+        - name: "StDataAdmissao"
+          in: "query"
+          required: false
+          schema:
+            type: "string"
+            format: "date"
+        - name: "StDataDemissao"
+          in: "query"
+          required: false
+          schema:
+            type: "string"
+            format: "date"
+        - name: "Pagina"
+          in: "query"
+          required: false
+          schema:
+            type: "integer"
+            format: "int32"
+        - name: "Pagesize"
+          in: "query"
+          required: false
+          schema:
+            type: "integer"
+            format: "int32"
+      
+      responses:
+        200:
+          description: "Successful operation"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/api.sdt_servidor_temporario_select_sdt_servidor_temporario_selectItem"  
+
+        404:
+          description: "Not found"
+
+
+    put:
+      tags:
+        - api  
+      operationId: "api.servidortemporario.ServidorTemporarioUpdate"
+      summary: "Método para alterar um registro da servidor temporário"
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ServidorTemporarioUpdateInput"
+      
+      responses:
+        200:
+          description: "Successful operation"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/GeneXus.Common.Messages_Message"  
+
+        404:
+          description: "Not found"
+
+  /{st_id}:
+    delete:
+      tags:
+        - api  
+      operationId: "api.servidortemporario.ServidorTemporarioDelete"
+      summary: "Método para excluir um registro da servidor temporário"
+      parameters:
+        - name: "st_id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int64"
+      
+      responses:
+        200:
+          description: "Successful operation"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/GeneXus.Common.Messages_Message"  
+
+        404:
+          description: "Not found"
+components:
+  schemas:
+    ServidorTemporarioinserirInput:  
+      properties:
+        sdt_servidor_temporario_insert:
+          description: "sdt_servidor_temporario_insert"
+          $ref: "#/components/schemas/api.sdt_servidor_temporario_insert"
+
+
+    ServidorTemporarioUpdateInput:  
+      properties:
+        sdt_servidor_temporario_update:
+          description: "sdt_servidor_temporario_update"
+          $ref: "#/components/schemas/api.sdt_servidor_temporario_update"
+
+  
+    api.sdt_servidor_temporario_insert:
+      properties:
+        st_data_demissao:
+          description: "st_data_demissao"
+          type: "string"
+          format: "date"
+        st_data_admissao:
+          description: "st_data_admissao"
+          type: "string"
+          format: "date"
+        pes_pai:
+          description: "Nome do Pai"
+          type: "string"
+        pes_mae:
+          description: "Nome da Mãe"
+          type: "string"
+        pes_sexo:
+          description: "Sexo"
+          type: "string"
+        pes_data_nascimento:
+          description: "Data de Nascimento"
+          type: "string"
+          format: "date"
+        pes_nome:
+          description: "Nome da Pessoa"
+          type: "string"
+
+        endereco:
+          type: array
+          items:
+            description: enderecoItem
+            $ref: "#/components/schemas/api.sdt_servidor_temporario_insert.endereco_enderecoItem"
+
+
+    api.sdt_servidor_temporario_insert.endereco_enderecoItem:
+      properties:
+        end_id:
+          description: "Id do Endereço"
+          type: "integer"
+          format: "int64"
+        end_tipo_logradouro:
+          description: "Tipo Logradouro"
+          type: "string"
+        end_logradouro:
+          description: "Logradouro"
+          type: "string"
+        end_numero:
+          description: "Numero"
+          type: "integer"
+          format: "int64"
+        end_bairro:
+          description: "Bairro"
+          type: "string"
+        cid_id:
+          description: "Id da Cidade"
+          type: "integer"
+          format: "int64"
+        cid_nome:
+          description: "Nome da Cidade"
+          type: "string"
+        cid_uf:
+          description: "UF da Cidade"
+          type: "string"
+
+
+      x-gx-level: "sdt_servidor_temporario_insert"
+
+    GeneXus.Common.Messages_Message:
+      properties:
+        Id:
+          description: "Id"
+          type: "string"
+        Type:
+          description: "Type"
+          type: "integer"
+          format: "int32"
+        Description:
+          description: "Description"
+          type: "string"
+
+
+
+    api.sdt_servidor_temporario_select_sdt_servidor_temporario_selectItem:
+      properties:
+        st_data_demissao:
+          description: "st_data_demissao"
+          type: "string"
+          format: "date"
+        st_data_admissao:
+          description: "st_data_admissao"
+          type: "string"
+          format: "date"
+        pes_pai:
+          description: "Nome do Pai"
+          type: "string"
+        pes_mae:
+          description: "Nome da Mãe"
+          type: "string"
+        pes_sexo:
+          description: "Sexo"
+          type: "string"
+        pes_data_nascimento:
+          description: "Data de Nascimento"
+          type: "string"
+          format: "date"
+        pes_nome:
+          description: "Nome da Pessoa"
+          type: "string"
+        fp_hash:
+          description: "Hash"
+          type: "string"
+        fp_bucket:
+          description: "Bucket"
+          type: "string"
+        fp_data:
+          description: "Data"
+          type: "string"
+          format: "date"
+
+        endereco:
+          type: array
+          items:
+            description: enderecoItem
+            $ref: "#/components/schemas/api.sdt_servidor_temporario_select.endereco_enderecoItem"
+
+
+    api.sdt_servidor_temporario_select.endereco_enderecoItem:
+      properties:
+        end_id:
+          description: "Id do Endereço"
+          type: "integer"
+          format: "int64"
+        end_tipo_logradouro:
+          description: "Tipo Logradouro"
+          type: "string"
+        end_logradouro:
+          description: "Logradouro"
+          type: "string"
+        end_numero:
+          description: "Numero"
+          type: "integer"
+          format: "int64"
+        end_bairro:
+          description: "Bairro"
+          type: "string"
+        cid_id:
+          description: "Id da Cidade"
+          type: "integer"
+          format: "int64"
+        cid_nome:
+          description: "Nome da Cidade"
+          type: "string"
+        cid_uf:
+          description: "UF da Cidade"
+          type: "string"
+
+
+      x-gx-level: "sdt_servidor_temporario_select"
+
+    api.sdt_servidor_temporario_update:
+      properties:
+        st_id:
+          description: "st_id"
+          type: "integer"
+          format: "int64"
+        st_data_demissao:
+          description: "st_data_demissao"
+          type: "string"
+          format: "date"
+        st_data_admissao:
+          description: "st_data_admissao"
+          type: "string"
+          format: "date"
+        pes_id:
+          description: "Id da Pessoa"
+          type: "integer"
+          format: "int64"
+
+        endereco:
+          type: array
+          items:
+            description: enderecoItem
+            $ref: "#/components/schemas/api.sdt_servidor_temporario_update.endereco_enderecoItem"
+
+
+    api.sdt_servidor_temporario_update.endereco_enderecoItem:
+      properties:
+        end_id:
+          description: "Id do Endereço"
+          type: "integer"
+          format: "int64"
+        end_tipo_logradouro:
+          description: "Tipo Logradouro"
+          type: "string"
+        end_logradouro:
+          description: "Logradouro"
+          type: "string"
+        end_numero:
+          description: "Numero"
+          type: "integer"
+          format: "int64"
+        end_bairro:
+          description: "Bairro"
+          type: "string"
+        cid_id:
+          description: "Id da Cidade"
+          type: "integer"
+          format: "int64"
+        cid_nome:
+          description: "Nome da Cidade"
+          type: "string"
+        cid_uf:
+          description: "UF da Cidade"
+          type: "string"
+
+
+      x-gx-level: "sdt_servidor_temporario_update"
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT 
+ 

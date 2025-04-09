@@ -1,0 +1,46 @@
+{
+"ObjectType":"ServiceGroup",
+"Name":"api\\cidade",
+"BasePath":"api/cidade",
+"Mappings":
+[
+{
+"Verb":"POST",
+"PathRegexp":"",
+"Path":"",
+"Name":"cidadeinsert",
+"Bodystyle":"Wrapped",
+"VariableAlias": [{"Key":"cidnome","Value":"Cid_nome"},{"Key":"ciduf","Value":"Cid_uf"},{"Key":"cidid","Value":"Cid_id"}],
+"ServiceMethod":"gxep_cidadeinsert",
+"Implementation":"api\\Cidade_Insert"
+},
+{
+"Verb":"PUT",
+"PathRegexp":"",
+"Path":"",
+"Name":"cidadeupdate",
+"Bodystyle":"Wrapped",
+"VariableAlias": [{"Key":"cidid","Value":"Cid_id"},{"Key":"cidnome","Value":"Cid_nome"},{"Key":"ciduf","Value":"Cid_uf"}],
+"ServiceMethod":"gxep_cidadeupdate",
+"Implementation":"api\\Cidade_Update"
+},
+{
+"Verb":"GET",
+"PathRegexp":"",
+"Path":"",
+"Name":"cidadeselect",
+"Bodystyle":"Wrapped",
+"VariableAlias": [{"Key":"cidid","Value":"Cid_id"},{"Key":"cidnome","Value":"Cid_nome"},{"Key":"ciduf","Value":"Cid_uf"}],
+"ServiceMethod":"gxep_cidadeselect",
+"Implementation":"api\\Cidade_Select"
+},
+{
+"Verb":"DELETE",
+"PathRegexp":"([^/]+)",
+"Path":"{cid_id}",
+"Name":"cidadedelete",
+"Bodystyle":"Wrapped",
+"VariableAlias": [{"Key":"cidid","Value":"Cid_id"}],
+"ServiceMethod":"gxep_cidadedelete",
+"Implementation":"api\\Cidade_Delete"
+}]}
