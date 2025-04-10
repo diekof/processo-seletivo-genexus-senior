@@ -3,7 +3,7 @@
 ## Inscrição do candidato:
 
 - **Processo Seletivo**: PSS 02/2025/SEPLAG (Analista de TI - Perfil Sênior)
-- **Inscrição**: 
+- **Inscrição**: 9741
 - **Nome**: DIEGO DONIZETE CORREA DA SILVA
 - **Perfil**: Desenvolvedor Genexus - Sênior
 
