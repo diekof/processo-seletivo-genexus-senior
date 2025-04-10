@@ -31,8 +31,8 @@
 	
 	<Resource name="ds_gx_seletivo" auth="Container" type="javax.sql.DataSource"
 	   maxTotal="100" maxIdle="30" maxWaitMillis="10000"
-	   username="postgres" password="123456" driverClassName="org.postgresql.Driver"
-	   url="jdbc:postgresql://postgres:5432/gx_seletivo"/> 	
+	   username="postgres" password="postgres" driverClassName="org.postgresql.Driver"
+	   url="jdbc:postgresql://seletivo-postgres:5432/seletivo"/> 	
 	   
 	   
 </Context>

@@ -128,4 +128,14 @@ Esta implementação atende todos os requisitos solicitados, incluindo:
 
 O código está organizado seguindo boas práticas de desenvolvimento e pode ser facilmente extendido para incluir novas funcionalidades.
 
+---
 
+# Anexos
+
+## Diagrama de Arquitetura
+
+![Diagrama de Arquitetura](./screenshots/diagrama.jpg)
+
+## Objetos
+
+![Preview do diagrama](./screenshots/objetos_api.png)
